@@ -1,0 +1,234 @@
+<h1 id="some-elementary-probability">Some elementary probability</h1>
+<h2 id="events-and-probabilities">Events and probabilities</h2>
+<p>An event, <span class="math inline"><em>E</em></span>, may turn out to be true or false. We write <span class="math inline"><em>P</em>(<em>E</em>)</span> for the probability that <span class="math inline"><em>E</em></span> will turn out to be true. <span class="math inline"><em>Ē</em></span> is the event that <span class="math inline"><em>E</em></span> is false. We require <span class="math inline"><em>P</em>(<em>E</em>)+<em>P</em>(<em>Ē</em>)=1</span>.</p>
+<p>For events <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> we write <span class="math inline"><em>E</em> ∩ <em>F</em></span> for the event that both <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> are true, and <span class="math inline"><em>E</em> ∪ <em>F</em></span> for the event that at least one of <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> is true.</p>
+<p>If <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> are <em>disjoint</em>, we have that <span class="math inline"><em>P</em>(<em>E</em> ∩ <em>F</em>)=0</span> and <span class="math inline"><em>P</em>(<em>E</em> ∪ <em>F</em>)=<em>P</em>(<em>E</em>)+<em>P</em>(<em>F</em>)</span>.</p>
+<p>In general, we have <br /><span class="math display"><em>P</em>(<em>E</em> ∪ <em>F</em>)=<em>P</em>(<em>E</em>)+<em>P</em>(<em>F</em>)−<em>P</em>(<em>E</em> ∩ <em>F</em>).</span><br /></p>
+<h2 id="conditional-probability-and-independence">Conditional probability and independence</h2>
+<p>We denote the <em>conditional</em> probability of <span class="math inline"><em>E</em></span> <em>given</em> <span class="math inline"><em>F</em></span> (the probability that <span class="math inline"><em>E</em></span> is true taking into account the fact that we know <span class="math inline"><em>F</em></span> is true) by <span class="math inline"><em>P</em>(<em>E</em>|<em>F</em>)</span>, and define it as <br /><span class="math display">$$ P(E | F) = \frac{P(E\cap F)}{P(F)}, $$</span><br /> assuming <span class="math inline"><em>P</em>(<em>F</em>)&gt;0</span>.</p>
+<p>We say that events <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> are <em>independent</em> if <br /><span class="math display"><em>P</em>(<em>E</em> ∩ <em>F</em>)=<em>P</em>(<em>E</em>)<em>P</em>(<em>F</em>).</span><br /> Note then that <span class="math inline"><em>P</em>(<em>E</em>|<em>F</em>)=<em>P</em>(<em>E</em>)</span> (assuming <span class="math inline"><em>P</em>(<em>F</em>)&gt;0</span>) and by symmetry <span class="math inline"><em>P</em>(<em>F</em>|<em>E</em>)=<em>P</em>(<em>F</em>)</span> (assuming <span class="math inline"><em>P</em>(<em>E</em>)&gt;0</span>). That is, learning the outcome of one event does not change the probability of the other.</p>
+<h2 id="bayes-theorem">Bayes theorem</h2>
+<p>Re-arranging the definition of conditional probability, we see that the joint probability of <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> can be written <span class="math inline"><em>P</em>(<em>E</em> ∩ <em>F</em>)=<em>P</em>(<em>F</em>)<em>P</em>(<em>E</em>|<em>F</em>)</span>, and by symmetry, we could also write <span class="math inline"><em>P</em>(<em>E</em> ∩ <em>F</em>)=<em>P</em>(<em>E</em>)<em>P</em>(<em>F</em>|<em>E</em>)</span>, and these are two different ways of <em>factorising</em> the joint probability. Equating these gives <br /><span class="math display"><em>P</em>(<em>E</em>)<em>P</em>(<em>F</em>|<em>E</em>)=<em>P</em>(<em>F</em>)<em>P</em>(<em>E</em>|<em>F</em>)</span><br /> <br /><span class="math display">$$\Rightarrow P(F|E) = \frac{P(F)P(E|F)}{P(E)},$$</span><br /> and this is the simplest example of <strong>Bayes theorem</strong>, which is typically concerned with reversing conditioning.</p>
+<h2 id="total-probabilty">Total probabilty</h2>
+<p>For any <span class="math inline"><em>E</em></span> and <span class="math inline"><em>F</em></span> we can write <span class="math inline"><em>E</em></span> as the disjoint union <span class="math inline"><em>E</em> = (<em>E</em> ∩ <em>F</em>)∪(<em>E</em> ∩ <em>F̄</em>)</span> giving <br /><span class="math display"><em>P</em>(<em>E</em>)=<em>P</em>(<em>E</em> ∩ <em>F</em>)+<em>P</em>(<em>E</em> ∩ <em>F̄</em>)</span><br /> which we can re-write as <br /><span class="math display"><em>P</em>(<em>E</em>)=<em>P</em>(<em>E</em>|<em>F</em>)<em>P</em>(<em>F</em>)+<em>P</em>(<em>E</em>|<em>F̄</em>)<em>P</em>(<em>F̄</em>).</span><br /> This is sometimes known as the theorem of total probability. We can use this to expand the denominator of <em>Bayes theorem</em> as <br /><span class="math display">$$ P(F|E) = \frac{P(F)P(E|F)}{P(E|F)P(F) + P(E|\bar F)P(\bar F)}. $$</span><br /></p>
+<h1 id="probability-tree-diagrams">Probability tree diagrams</h1>
+<h2 id="rapid-assessment-of-slope-condition">Rapid assessment of slope condition</h2>
+<p>Suppose we have a two-stage rapid assessment test for a slope. A quick initial test will return + (the slope appears to be in good condition), - (the slope appears to be in bad condition) or ? (the test is inconclusive). In the case of an inconclusive initial test, a second test is carried out, and this test will return either + or -.</p>
+<p>When the slope is actually in good condition, the initial test will return +, ?, - with probabilities 0.5, 0.25, 0.25. If the second test is carried out, it will return + with probability 0.8 and - with probability 0.2.</p>
+<p>When the slope is actually in poor condition, the intial test will return +, ?, - with probabilities 0.25, 0.25, 0.5. If the second test is carried out, it will return + with probability 0.2 and - with probability 0.8.</p>
+<p>Let's assume that 98% of slopes are good: <span class="math inline"><em>P</em>(Good)=0.98</span>.</p>
+<h2 id="probability-tree">Probability tree</h2>
+<div class="figure">
+<img src="figs/pt1.jpg" alt="Probability tree diagram" />
+<p class="caption">Probability tree diagram</p>
+</div>
+<h2 id="computing-on-a-probability-tree">Computing on a probability tree</h2>
+<p>Typically, we multiply probabilities along branches to get the joint probability of multiple related outcomes.</p>
+<p>Given probabilities for the disjoint events at the leaves of the tree, we can then sum these to get probabilities of outcomes of interest.</p>
+<h2 id="bayesian-network">Bayesian network</h2>
+<div class="figure">
+<img src="figs/pt2.jpg" alt="DAG model / Bayesian network" />
+<p class="caption">DAG model / Bayesian network</p>
+</div>
+<h2 id="dag-model-with-conditional-probability-tables-cpts">DAG model with conditional probability tables (CPTs)</h2>
+<div class="figure">
+<img src="figs/pt3.jpg" alt="Fully specified Bayesian network" />
+<p class="caption">Fully specified Bayesian network</p>
+</div>
+<h2 id="bayesian-networks">Bayesian networks</h2>
+<p>Conceptually, a Bayesian network/DAG model represents the uncertain variables in a problem and how they influence one another. Nodes without parents have a vector of probabilities of outcomes. Nodes with parents have a table of conditional probabilities of outcomes conditional on the outcome of any parents.</p>
+<p>The DAG structure together with the specification of CPTs in principle allow the construction of a full probability tree of all possible outcomes, and hence the computation of any required probabilities of interest.</p>
+<p>In practice there are efficient algorithms for computing probabilities associated with Bayesian networks which do not require a full expansion of the graph.</p>
+<h2 id="dags-as-a-factorisation">DAGs as a factorisation</h2>
+<p>The DAG represents a <em>factorisation</em> of the joint probability distribution over all variables, and is not unique in general. Here, for example, we have <br /><span class="math display"><em>P</em>(True, Init, Final)=<em>P</em>(True)<em>P</em>(Init|True)<em>P</em>(Final|Init, Final).</span><br /> Not all factorisations are equivalent, but the one above is completely general in the sense that any joint distribution over the three variables could be factorised in this way.</p>
+<p>In general, for a DAG with nodes <span class="math inline"><em>v</em><sub><em>i</em></sub></span> having parents <span class="math inline">pa{<em>v</em><sub><em>i</em></sub>}</span> we have <br /><span class="math display">$$P(\mathbf{v}) = \prod_{i=1}^n P(v_i|\operatorname{pa}\{v_i\}).$$</span><br /></p>
+<h2 id="node-elimination">Node elimination</h2>
+<p>Ultimately the test procedure returns either + or -, and we are not particularly interested in the intermediate stage, so we can <em>marginalise</em> out the intermediate stage. eg. <br /><span class="math display"><em>P</em>(+|Good)=0.5 + 0.25 × 0.8 = 0.7,</span><br /> etc., leading to CPT:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Outcome</th>
+<th align="center">+</th>
+<th align="center">-</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Good</td>
+<td align="center">0.7</td>
+<td align="center">0.3</td>
+</tr>
+<tr class="even">
+<td align="right">Bad</td>
+<td align="center">0.3</td>
+<td align="center">0.7</td>
+</tr>
+</tbody>
+</table>
+<p>This leads to a simplified probability tree and Bayesian network.</p>
+<hr />
+<div class="figure">
+<img src="figs/pt4.jpg" alt="Simplified tree and associated DAG" />
+<p class="caption">Simplified tree and associated DAG</p>
+</div>
+<h2 id="reversing-an-arc">Reversing an arc</h2>
+<p>We know <span class="math inline"><em>P</em>(Test|Cond)</span>, but we are probably more interested in <span class="math inline"><em>P</em>(Cond|Test)</span>. So we need to turn our conditional probabilities around using <em>Bayes theorem</em>. eg. <br /><span class="math display">$$ P(\text{Bad} | \text{+} ) = \frac{P(\text{Bad})P(+|\text{Bad})}{P(+)} = \frac{0.02\times 0.3}{0.692} = 0.0087. $$</span><br /></p>
+<p>Repeating this for the other conditional probabilities allows us to reverse the order of nodes in the probability tree and reverse the arc in the DAG model.</p>
+<hr />
+<div class="figure">
+<img src="figs/pt5.jpg" alt="Reversed tree and DAG with arc reversed" />
+<p class="caption">Reversed tree and DAG with arc reversed</p>
+</div>
+<h1 id="dag-models-in-r">DAG models in R</h1>
+<h2 id="installing-grain">Installing gRain</h2>
+<p>There is a nice R package for working with discrete graphical models in R, called <code>gRain</code>. Unfortunately it is less easy to install than most R packages on <a href="https://cran.r-project.org/">CRAN</a>, since it has dependencies on some packages that are not in CRAN, but instead in another R package repository known as <a href="https://bioconductor.org/">Bioconductor</a>. So installing <code>gRain</code> in a recent version of R should proceed roughly as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)
+BiocManager<span class="op">::</span><span class="kw">install</span>()
+BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;graph&quot;</span>, <span class="st">&quot;RBGL&quot;</span>, <span class="st">&quot;Rgraphviz&quot;</span>))
+<span class="kw">install.packages</span>(<span class="st">&quot;gRain&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gRain)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="st">&quot;gRain-intro&quot;</span>)</code></pre></div>
+<h2 id="condition-assessment-example">Condition assessment example</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tc =<span class="st"> </span><span class="kw">cptable</span>(<span class="op">~</span>cond, <span class="dt">values=</span><span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">2</span>),<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Good&quot;</span>,<span class="st">&quot;Bad&quot;</span>))
+it =<span class="st"> </span><span class="kw">cptable</span>(<span class="op">~</span>init<span class="op">|</span>cond, <span class="dt">values=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">50</span>),
+      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;?&quot;</span>,<span class="st">&quot;-&quot;</span>))
+ft =<span class="st"> </span><span class="kw">cptable</span>(<span class="op">~</span>final<span class="op">|</span>init<span class="op">:</span>cond, 
+      <span class="dt">values=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">0</span>,<span class="dv">10</span>), 
+      <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>))
+plist =<span class="st"> </span><span class="kw">compileCPT</span>(<span class="kw">list</span>(tc,it,ft))
+plist</code></pre></div>
+<pre><code>## CPTspec with probabilities:
+##  P( cond )
+##  P( init | cond )
+##  P( final | init cond )</code></pre>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plist<span class="op">$</span>final</code></pre></div>
+<pre><code>## , , cond = Good
+## 
+##      init
+## final +   ? -
+##     + 1 0.8 0
+##     - 0 0.2 1
+## 
+## , , cond = Bad
+## 
+##      init
+## final +   ? -
+##     + 1 0.2 0
+##     - 0 0.8 1
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;parray&quot; &quot;array&quot;</code></pre>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">net =<span class="st"> </span><span class="kw">grain</span>(plist)
+net</code></pre></div>
+<pre><code>## Independence network: Compiled: FALSE Propagated: FALSE 
+##   Nodes: chr [1:3] &quot;cond&quot; &quot;init&quot; &quot;final&quot;</code></pre>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(net)</code></pre></div>
+<div class="figure">
+<img src="figure/grain-plot-1.png" alt="plot of chunk grain-plot" />
+<p class="caption">plot of chunk grain-plot</p>
+</div>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">querygrain</span>(net, <span class="dt">nodes=</span><span class="kw">c</span>(<span class="st">&quot;final&quot;</span>), <span class="dt">type=</span><span class="st">&quot;marginal&quot;</span>)</code></pre></div>
+<pre><code>## $final
+## final
+##     +     - 
+## 0.692 0.308</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">netP =<span class="st"> </span><span class="kw">setEvidence</span>(net, <span class="dt">evidence=</span><span class="kw">list</span>(<span class="dt">final=</span><span class="st">&quot;+&quot;</span>))
+<span class="kw">querygrain</span>(netP, <span class="dt">nodes=</span><span class="kw">c</span>(<span class="st">&quot;cond&quot;</span>), <span class="dt">type=</span><span class="st">&quot;marginal&quot;</span>)</code></pre></div>
+<pre><code>## $cond
+## cond
+##       Good        Bad 
+## 0.99132948 0.00867052</code></pre>
+<h1 id="decision-trees-and-influence-diagrams">Decision trees and influence diagrams</h1>
+<h2 id="costs-expected-costs-and-decisions">Costs, expected costs and decisions</h2>
+<p>We can often associate <em>costs</em> or <em>rewards</em> with the outcomes at the leaves of probability trees. We can then use the trees to compute <em>expected</em> costs (or rewards). If there are <em>decisions</em> that can be made, we may include the decision as (square) nodes in our probability trees, and these then become known as <a href="https://en.wikipedia.org/wiki/Decision_tree"><em>decision trees</em></a>.</p>
+<p>If we include decision nodes in Bayesian networks, they are usually referred to as <a href="https://en.wikipedia.org/wiki/Influence_diagram"><em>influence diagrams</em></a> (or <em>decision networks</em>).</p>
+<h2 id="terminology-clash">Terminology clash</h2>
+<p>Unfortunately the term <em>decision tree</em> now has two common meanings. Traditionally, it referred to probability trees including decision nodes, as just described above. However, there is now a second meaning of the term that is often used in machine learning, and increasingly often in statistics, where it refers to a particular kind of flexible model for regression and classification. This type of <a href="https://en.wikipedia.org/wiki/Decision_tree_learning"><em>decision tree</em></a> underpins ML methods such as CART, BART and <a href="https://en.wikipedia.org/wiki/Random_forest"><em>random forests</em></a>.</p>
+<h2 id="outcomes-cost-and-expected-cost">Outcomes, cost, and expected cost</h2>
+<p>Suppose (for simplicity) that a slope in good condition will not fail (over the next decade) and the a slope in bad condition will fail with probability 0.5. Suppose also that failure will incur a cost of £1M. We can use a simple probability tree to understand expected cost.</p>
+<div class="figure">
+<img src="figs/dt1.jpg" alt="Simple probability tree with costs" style="width:50.0%" />
+<p class="caption">Simple probability tree with costs</p>
+</div>
+<h2 id="intervention-decision">Intervention decision</h2>
+<p>Suppose now that we have the option of intervening (eg. installing a drain), at the cost of £10K. Intervening on a good slope will have no impact, but intervening on a bad slope will reduce the probability of failure from 0.5 to 0.2. Should we intervene?</p>
+<div class="figure">
+<img src="figs/dt2.jpg" alt="Influence diagram for an intervention decision" style="width:50.0%" />
+<p class="caption">Influence diagram for an intervention decision</p>
+</div>
+<hr />
+<div class="figure">
+<img src="figs/dt3.jpg" alt="Decision tree for an intervention decision" />
+<p class="caption">Decision tree for an intervention decision</p>
+</div>
+<hr />
+<div class="figure">
+<img src="figs/dt4.jpg" alt="Solved decision tree for an intervention decision" />
+<p class="caption">Solved decision tree for an intervention decision</p>
+</div>
+<p>Global intervention is not cost effective in this example.</p>
+<h2 id="testing-to-gain-information">Testing to gain information</h2>
+<p>What about the rapid characterisation test discussed earlier? If we can carry out that test and use the result of the test to inform our intervention decision, perhaps that will lead to lower costs overall.</p>
+<div class="figure">
+<img src="figs/dt5.jpg" alt="Influence diagram for an intervention decision" style="width:50.0%" />
+<p class="caption">Influence diagram for an intervention decision</p>
+</div>
+<hr />
+<div class="figure">
+<img src="figs/dt6.jpg" alt="Decision tree for an intervention decision" />
+<p class="caption">Decision tree for an intervention decision</p>
+</div>
+<hr />
+<div class="figure">
+<img src="figs/dt7.jpg" alt="Solved decision tree for an intervention decision" />
+<p class="caption">Solved decision tree for an intervention decision</p>
+</div>
+<h2 id="value-of-information">Value of information</h2>
+<p>Unsurprisingly, if the test suggests that the slope is in good condition, then it is not worth intervening. However, if the test suggests that the slope is in poor condition, then we see that it is cost effective to intervene, since the cost of intervention is less than the expected cost associated with failure.</p>
+<p>Overall, the expected cost associated with the optimal decision strategy prior to conducting the test is £8.97K. This is roughly £1K less than the £10K cost associated with the optimal decsion in the absense of test information. So, the information we get from the test has a quantifiable value of around £1K. That is, it would be worth paying up to £1K to have this test carried out.</p>
+<h2 id="scaling-up">Scaling up</h2>
+<div class="figure">
+<img src="figs/et.jpg" alt="Event tree analysis for dam failure" />
+<p class="caption">Event tree analysis for dam failure</p>
+</div>
+<p>From Baecher and Christian</p>
+<hr />
+<div class="figure">
+<img src="figs/id.jpg" alt="Influence diagram for levee failure" />
+<p class="caption">Influence diagram for levee failure</p>
+</div>
+<p>From Baecher and Christian</p>
+<h1 id="further-reading">Further reading</h1>
+<h2 id="on-line-material">On-line material</h2>
+<h3 id="wikipedia">Wikipedia</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Graphical_model">Graphical model</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bayesian_network">Bayesian network</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Decision_tree">Decision tree</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Influence_diagram">Influence diagram</a></li>
+</ul>
+<h3 id="r-software">R software</h3>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/gR.html">CRAN Graphical models task view</a>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/gRain/index.html">R gRain package</a>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/gRain/vignettes/gRain-intro.pdf">vignette</a></li>
+<li><a href="http://people.math.aau.dk/~sorenh/software/gR/">overview and installation instructions</a></li>
+</ul></li>
+</ul></li>
+<li><a href="https://cran.r-project.org/package=HydeNet">HydeNet</a></li>
+</ul>
+<h2 id="books">Books</h2>
+<ul>
+<li>Reliability and Statistics in Geotechnical Engineering (Baecher and Christian) - <a href="https://books.google.co.uk/books?isbn=0470871253">ISBN 0470871253</a></li>
+<li><a href="http://www.cs.ucl.ac.uk/staff/d.barber/brml/">Bayesian reasoning and machine learning</a> (Barber) - <a href="https://books.google.co.uk/books?isbn=0521518148">ISBN 0521518148</a> - <strong>free PDF available</strong></li>
+<li>Graphical models with R (Højsgaard et al) - <a href="https://books.google.co.uk/books?isbn=1461422981">ISBN 1461422981</a></li>
+<li>Making hard decisions (Clemen) - <a href="https://books.google.co.uk/books?isbn=0534260349">ISBN 0534260349</a></li>
+<li>Probabilistic reasoning in intelligent systems (Pearl) - <a href="https://books.google.co.uk/books?isbn=0080514898">ISBN 0080514898</a></li>
+<li>Probabilistic networks and expert systems (Cowell et al) - <a href="https://books.google.co.uk/books?isbn=0387718230">ISBN 0387718230</a></li>
+</ul>

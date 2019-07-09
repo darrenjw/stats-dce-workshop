@@ -1,0 +1,10 @@
+---
+title: "A tutorial introduction to the design and analysis of computer experiments"
+author: "Darren Wilkinson"
+date: "darrenjw.github.io"
+output:
+  beamer_presentation:
+    slide_level: 2
+    theme: "metropolis"
+---
+
