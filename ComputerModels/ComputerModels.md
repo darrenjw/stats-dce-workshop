@@ -12,7 +12,7 @@
 * An **emulator** is a *cheap* (fast) surrogate for the computer model, which has many potential uses
 * Principally, it can be used instead of the real model in algorithms that require many evaluations of the simulator at many different input configurations
 * Some emulators are good and some are bad --- to be useful, they should have a measure of *uncertainty* associated with them
-* *Stochastic process* emulators define a probability distribution on the space of functions consistent with any known evaluations of the simulator
+* *Stochastic process* emulators define a probability distribution on the space of functions consistent with any known evaluations of the *simulator* (expensive computer model)
 * *Gaussian processes* (GPs) are one of the simplest and most tractable stochastic processes on function space
 
 # Gaussian processes (GPs)
@@ -142,7 +142,7 @@ image(rGP2d(0.5))
 * We can *condition* the GP on some observations and the conditional process is also a GP, but with a new mean and covariance function that is a function of the observations
 * This new GP can represent our uncertainty about a function given some observations
 * This uncertain representation of our knowledge of the function can be used to *emulate* an expensive function, such as a complex computer code
-* The uncertainty associated with the GP can be used to properly quantify and propagage uncertainty associated with the fact that we don't actually know the expensive model everywhere
+* The uncertainty associated with the GP can be used to properly quantify and propagate uncertainty associated with the fact that we don't actually know the expensive model everywhere
 
 
 ## DiceKriging
@@ -152,13 +152,6 @@ image(rGP2d(0.5))
 
 ```r
 library(DiceKriging)
-```
-
-```
-## Loading required package: methods
-```
-
-```r
 set.seed(1)
 nd = 20
 x = as.matrix(runif(nd,0,5))
@@ -416,8 +409,17 @@ points(mcycle,pch=19,col=2)
 
 ![plot of chunk mcycle-het](figure/mcycle-het-1.png)
 
+## Bayesian versus frequentist parameter fitting
 
+* Although the essential essence of GP emulation is fundamentally Bayesian (conditioning a joint probability distribution on observations), the estimation of parameters such as scale and length scale can be done in various ways
+* All of the R packages described above used frequentist fitting procedures of some sort, typically based around the method of *maximum likelihood*
+* The emulator produced is then *conditional* on a single point estimate of those parameters, which means that the uncertainties associated with them typically (significantly) underestimate the true uncertainty associated with the unknown function
 
+## Bayesian fitting, UQ, and uncertainty propagation
+
+* Computationally intensive Bayesian methods can be used which properly account for (quantify) all uncertainties in the problem, and so then samples from the emulation distribution can be used to form Monte Carlo ensembles that can correctly propagate uncertainty through further downstream analyses
+* In this context, GP emulators can be usefully embedded into large Bayesian hierarchical models
+* It can be challenging to fit such large and complex Bayesian hierarchical models - often custom code is written, tailored to a specific application, but general purpose software such as [Stan](https://mc-stan.org/) is adding support for GPs
 
 # Design of computer experiments
 
@@ -425,7 +427,7 @@ points(mcycle,pch=19,col=2)
 
 * When working with expensive computer models with input parameters, the choice of which combination of inputs to run is important, and worth doing carefully
 * For a single tunable parameter, a uniform grid can be sensible
-* For multiple input parameters, a cartesian product design seems intuitive, but is actually a very poor choice, and gets worse in higher dimensions
+* For multiple input parameters, a Cartesian product design seems intuitive, but is actually a very poor choice, and gets worse in higher dimensions
 * LHS is a technique for choosing points such that the univariate margins essentially form a uniform grid
 * The simplest approaches give random designs subject to the constraint of uniform margins
 * More sophisticated variants try to optimise some desirable property of the design, such as maximising the minimum distance between points
