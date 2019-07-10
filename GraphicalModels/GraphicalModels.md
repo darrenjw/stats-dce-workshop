@@ -6,7 +6,7 @@ An event, $E$, may turn out to be true or false. We write $P(E)$ for the probabi
 
 For events $E$ and $F$ we write $E \cap F$ for the event that both $E$ and $F$ are true, and $E \cup F$ for the event that at least one of $E$ and $F$ is true.
 
-If $E$ and $F$ are *disjoint*, we have that $P(E \cap F)=0$ and $P(E \cup F) = P(E) + P(F)$.
+If $E$ and $F$ are *disjoint* (cannot both be true), we have that $P(E \cap F)=0$ and $P(E \cup F) = P(E) + P(F)$.
 
 In general, we have
 $$P(E \cup F) = P(E) + P(F) - P(E\cap F).$$
@@ -29,13 +29,13 @@ $$\Rightarrow P(F|E) = \frac{P(F)P(E|F)}{P(E)},$$
 and this is the simplest example of **Bayes theorem**, which is typically concerned with reversing conditioning.
 
 
-## Total probabilty
+## Total probability
 
 For any $E$ and $F$ we can write $E$ as the disjoint union $E = (E\cap F) \cup (E\cap \bar F)$ giving
 $$ P(E) = P(E\cap F) + P(E \cap \bar F)$$
 which we can re-write as
 $$ P(E) = P(E|F)P(F) + P(E|\bar F)P(\bar F).$$
-This is sometimes known as the theorem of total probability.
+This is sometimes known as the *theorem of total probability*.
 We can use this to expand the denominator of *Bayes theorem* as
 $$ P(F|E) = \frac{P(F)P(E|F)}{P(E|F)P(F) + P(E|\bar F)P(\bar F)}. $$
 
@@ -47,7 +47,7 @@ Suppose we have a two-stage rapid assessment test for a slope. A quick initial t
 
 When the slope is actually in good condition, the initial test will return +, ?, - with probabilities 0.5, 0.25, 0.25. If the second test is carried out, it will return + with probability 0.8 and - with probability 0.2.
 
-When the slope is actually in poor condition, the intial test will return +, ?, - with probabilities 0.25, 0.25, 0.5. If the second test is carried out, it will return + with probability 0.2 and - with probability 0.8.
+When the slope is actually in poor condition, the initial test will return +, ?, - with probabilities 0.25, 0.25, 0.5. If the second test is carried out, it will return + with probability 0.2 and - with probability 0.8.
 
 Let's assume that 98% of slopes are good: $P(\text{Good}) = 0.98$.
 
@@ -82,7 +82,7 @@ In practice there are efficient algorithms for computing probabilities associate
 ## DAGs as a factorisation
 
 The DAG represents a *factorisation* of the joint probability distribution over all variables, and is not unique in general. Here, for example, we have
-$$P(\text{True}, \text{Init}, \text{Final}) = P(\text{True})P(\text{Init}|\text{True})P(\text{Final}|\text{Init}, \text{Final}).$$
+$$P(\text{Cond}, \text{Init}, \text{Final}) = P(\text{Cond})P(\text{Init}|\text{Cond})P(\text{Final}|\text{Init}, \text{Cond}).$$
 Not all factorisations are equivalent, but the one above is completely general in the sense that any joint distribution over the three variables could be factorised in this way.
 
 In general, for a DAG with nodes $v_i$ having parents $\operatorname{pa}\{v_i\}$ we have
@@ -111,6 +111,8 @@ We know $P(\text{Test}|\text{Cond})$, but we are probably more interested in $P(
 $$ P(\text{Bad} | \text{+} ) = \frac{P(\text{Bad})P(+|\text{Bad})}{P(+)} = \frac{0.02\times 0.3}{0.692} = 0.0087. $$
 
 Repeating this for the other conditional probabilities allows us to reverse the order of nodes in the probability tree and reverse the arc in the DAG model.
+
+This reversal of conditioning allows us to update our prior belief about the condition of a slope based on the result of the rapid characterisation test.
 
 ---
 
@@ -287,7 +289,7 @@ What about the rapid characterisation test discussed earlier? If we can carry ou
 
 Unsurprisingly, if the test suggests that the slope is in good condition, then it is not worth intervening. However, if the test suggests that the slope is in poor condition, then we see that it is cost effective to intervene, since the cost of intervention is less than the expected cost associated with failure.
 
-Overall, the expected cost associated with the optimal decision strategy prior to conducting the test is £8.97K. This is roughly £1K less than the £10K cost associated with the optimal decsion in the absense of test information. So, the information we get from the test has a quantifiable value of around £1K. That is, it would be worth paying up to £1K to have this test carried out.
+Overall, the expected cost associated with the optimal decision strategy prior to conducting the test is £8.97K. This is roughly £1K less than the £10K cost associated with the optimal decision in the absence of test information. So, the information we get from the test has a quantifiable value of around £1K. That is, it would be worth paying up to £1K to have this test carried out.
 
 
 ## Scaling up
