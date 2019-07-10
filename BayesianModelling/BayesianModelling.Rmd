@@ -235,7 +235,7 @@ for (i in samples) curve(dgamma(x, mat[i,1],
   mat[i,2]), 0, 30, add=TRUE, col=2)
 ```
 
-## Hierachical structure and latent variables
+## Hierarchical structure and latent variables
 
 Minimal 2-layer DAG model structure
 
@@ -348,8 +348,12 @@ print(summary(output))
 plot(output)
 ```
 
-The slope is drawn from a distribution with mean around 11.5.
+---
 
+* The slope is drawn from a distribution with mean around 11.5 and standard deviation around 1.5 
+* This random effects distribution allows "borrowing of strength" across different slopes, including any with sparse observations
+* It also allows shared learning of the observational error without having to assume a common slope
+* We could use this distribution of random effects to draw values for slopes not observed or measured in our data set
 
 
 # Further reading

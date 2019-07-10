@@ -153,12 +153,12 @@ print(summary(output))
 ##    plus standard error of the mean:
 ## 
 ##           Mean             SD       Naive SE Time-series SE 
-##       1.627008       0.282412       0.006315       0.005844 
+##       1.620931       0.282889       0.006326       0.006326 
 ## 
 ## 2. Quantiles for each variable:
 ## 
 ##  2.5%   25%   50%   75% 97.5% 
-## 1.115 1.430 1.611 1.813 2.209
+## 1.118 1.427 1.598 1.813 2.200
 ```
 
 ---
@@ -313,15 +313,15 @@ print(summary(output))
 ## 1. Empirical mean and standard deviation for each variable,
 ##    plus standard error of the mean:
 ## 
-##     Mean     SD Naive SE Time-series SE
-## a 6.8379 0.9474 0.018949       0.043939
-## b 0.6941 0.1001 0.002002       0.004788
+##     Mean      SD Naive SE Time-series SE
+## a 6.8288 0.88614 0.017723       0.041153
+## b 0.6932 0.09293 0.001859       0.004194
 ## 
 ## 2. Quantiles for each variable:
 ## 
-##     2.5%   25%    50%    75%  97.5%
-## a 5.1162 6.165 6.7958 7.4341 8.8916
-## b 0.5127 0.623 0.6888 0.7599 0.9018
+##     2.5%    25%    50%    75%  97.5%
+## a 5.2501 6.1782 6.8088 7.4154 8.6288
+## b 0.5235 0.6267 0.6883 0.7543 0.8754
 ```
 
 ---
@@ -353,7 +353,7 @@ samples
 ```
 
 ```
-## [1] 1038  528 1072  332 1149
+## [1] 1536  504 1481  358  785
 ```
 ---
 
@@ -366,7 +366,7 @@ for (i in samples) curve(dgamma(x, mat[i,1],
 
 ![plot of chunk gamma-jags-uq](figure/gamma-jags-uq-1.png)
 
-## Hierachical structure and latent variables
+## Hierarchical structure and latent variables
 
 Minimal 2-layer DAG model structure
 
@@ -391,10 +391,6 @@ library(lme4)
 
 ```
 ## Loading required package: Matrix
-```
-
-```
-## Loading required package: methods
 ```
 
 ```r
@@ -504,16 +500,16 @@ print(summary(output))
 ##    plus standard error of the mean:
 ## 
 ##            Mean        SD  Naive SE Time-series SE
-## mu    11.375760 1.5151743 3.030e-02      3.210e-02
-## tau    0.001515 0.0001851 3.702e-06      3.702e-06
-## tau.s  0.037026 0.0174998 3.500e-04      3.955e-04
+## mu    11.347725 1.4865837 2.973e-02      2.973e-02
+## tau    0.001511 0.0001821 3.641e-06      3.641e-06
+## tau.s  0.037778 0.0179656 3.593e-04      3.941e-04
 ## 
 ## 2. Quantiles for each variable:
 ## 
-##           2.5%       25%       50%       75%     97.5%
-## mu    8.367399 10.416524 11.389598 12.339107 14.449059
-## tau   0.001179  0.001386  0.001509  0.001632  0.001899
-## tau.s 0.014217  0.025126  0.033424  0.044385  0.079298
+##           2.5%       25%      50%      75%     97.5%
+## mu    8.303804 10.389735 11.36609 12.31044 14.207560
+## tau   0.001172  0.001383  0.00150  0.00163  0.001896
+## tau.s 0.014209  0.025663  0.03434  0.04497  0.082608
 ```
 
 ---
@@ -525,8 +521,12 @@ plot(output)
 
 ![plot of chunk re-jags](figure/re-jags-1.png)
 
-The slope is drawn from a distribution with mean around 11.5.
+---
 
+* The slope is drawn from a distribution with mean around 11.5 and standard deviation around 1.5 
+* This random effects distribution allows "borrowing of strength" across different slopes, including any with sparse observations
+* It also allows shared learning of the observational error without having to assume a common slope
+* We could use this distribution of random effects to draw values for slopes not observed or measured in our data set
 
 
 # Further reading
